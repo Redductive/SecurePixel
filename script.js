@@ -410,3 +410,88 @@ if ('serviceWorker' in navigator) {
             .catch(err => console.log('Service Worker Failed', err));
     });
 }
+// --- GDPR/CCPA Cookie Consent & Dual-Stream Analytics ---
+
+const cookieBanner = document.getElementById('cookie-banner');
+const acceptBtn = document.getElementById('cookie-accept');
+const declineBtn = document.getElementById('cookie-decline');
+
+// 1. Define your Stream IDs
+// Copy these from your Google Analytics "Data Streams" page
+const GA_ID_CUSTOM = 'G-H0FYEM7XH2'; // Replace with ID for dippanbhusal.tech
+const GA_ID_VERCEL = 'G-4JFCC0CE80'; // Replace with ID for vercel.app
+
+// 2. Determine which ID to use based on the current URL
+let activeGA_ID = null;
+
+if (window.location.hostname.includes('dippanbhusal.tech')) {
+    activeGA_ID = GA_ID_CUSTOM;
+} else if (window.location.hostname.includes('vercel.app')) {
+    activeGA_ID = GA_ID_VERCEL;
+} else {
+    // Fallback: If testing on localhost, you can choose one or leave null
+    console.log('SecurePixel: Running on localhost or unknown domain.');
+}
+
+// 3. Function to load the correct Analytics ID
+function loadAnalytics() {
+    if (!activeGA_ID) return; // Don't load if no ID matches
+
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = `https://www.googletagmanager.com/gtag/js?id=${activeGA_ID}`;
+    
+    const script2 = document.createElement('script');
+    script2.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${activeGA_ID}', { 'anonymize_ip': true });
+    `;
+
+    document.head.appendChild(script1);
+    document.head.appendChild(script2);
+    
+    console.log(`SecurePixel: Analytics loaded for ${window.location.hostname} (${activeGA_ID})`);
+}
+
+// 4. Check LocalStorage on load
+window.addEventListener('load', () => {
+    const consent = localStorage.getItem('securepixel_consent');
+
+    if (consent === 'granted') {
+        loadAnalytics();
+    } else if (consent === 'denied') {
+        // User previously declined; do nothing.
+    } else {
+        // Show Banner (First time visitor)
+        setTimeout(() => {
+            cookieBanner.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                cookieBanner.classList.remove('translate-y-10', 'opacity-0');
+            });
+        }, 1000);
+    }
+});
+
+// 5. Handle Accept
+acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('securepixel_consent', 'granted');
+    // This timestamp is your "Consent Proof" mentioned by Niles Singh
+    localStorage.setItem('securepixel_consent_date', new Date().toISOString()); 
+    
+    // Animate banner away
+    cookieBanner.classList.add('opacity-0', 'translate-y-10');
+    setTimeout(() => cookieBanner.classList.add('hidden'), 300);
+    
+    loadAnalytics();
+});
+
+// 6. Handle Decline
+declineBtn.addEventListener('click', () => {
+    localStorage.setItem('securepixel_consent', 'denied');
+    localStorage.setItem('securepixel_consent_date', new Date().toISOString());
+    
+    cookieBanner.classList.add('opacity-0', 'translate-y-10');
+    setTimeout(() => cookieBanner.classList.add('hidden'), 300);
+});
