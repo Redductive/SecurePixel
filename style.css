@@ -1,0 +1,45 @@
+/* Custom Animations & Base Overrides */
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.dark ::-webkit-scrollbar-track {
+    background: #2d2d2d;
+}
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+    background: #555;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #FFD600;
+}
+
+/* Floating Label Transition fix for inputs */
+input:placeholder-shown ~ label {
+    top: 1rem;
+    font-size: 1rem;
+    color: #6b7280;
+}
+.dark input:placeholder-shown ~ label {
+    color: #9ca3af;
+}
+
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label {
+    top: 0.25rem;
+    font-size: 0.75rem;
+    color: #FFD600;
+}
+
+/* Prevent image dragging in viewer */
+#full-image {
+    user-select: none;
+    -webkit-user-drag: none;
+}
