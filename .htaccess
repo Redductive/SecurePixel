@@ -1,0 +1,39 @@
+# ----------------------------------------------------------------------
+# | Custom Error Pages                                                 |
+# ----------------------------------------------------------------------
+
+# Point all 404 errors to the custom 404.html page
+ErrorDocument 404 /404.html
+
+# ----------------------------------------------------------------------
+# | Security Headers                                                   |
+# ----------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+    # Prevent the site from being embedded in an iframe (Clickjacking protection)
+    Header set X-Frame-Options "DENY"
+    
+    # Prevent MIME-sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Enable Cross-Site Scripting filter
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# | Browser Caching                                                    |
+# ----------------------------------------------------------------------
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    
+    # CSS/JS
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
