@@ -2,27 +2,24 @@
 
 ## Supported Versions
 
-Since this is a web-based tool, only the latest deployment and the `main` branch are currently supported.
-
 | Version | Supported          |
 | ------- | ------------------ |
 | Main    | :white_check_mark: |
+| v1.0.0  | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-If you have discovered a security vulnerability in SecurePixel (e.g., a flaw in the encryption implementation, data leakage, or XSS vulnerability), please report it privately.
+If you have discovered a security vulnerability in SecurePixel (e.g., data leakage, broken encryption, or XSS), please report it privately:
 
-1.  Email **dippan.connect@gmail.com** with the subject "SECURITY: SecurePixel Vulnerability".
+1.  Email **dippan.connectl@gmail.com** with the subject "SECURITY: SecurePixel Vulnerability".
 2.  Include details about the vulnerability and steps to reproduce it.
-3.  We will respond as quickly as possible (usually within 48 hours).
 
-We appreciate your help in disclosing confidential information responsibly and will credit you for your discovery.
+## Privacy & Data Handling
 
-## Privacy Note
+SecurePixel is designed to be **Client-Side First**.
 
-SecurePixel is designed to be **Client-Side Only**.
-- No user images are stored on our servers.
-- No passwords are sent to our servers.
-- Any change that introduces server-side data collection is considered a security violation.
+* **Encryption:** All cryptographic operations happen in the browser. No unencrypted data is ever sent to our servers.
+* **Analytics:** We use Google Analytics to monitor traffic. This is strictly for performance metrics (page views, load times). 
+    * **Vulnerability Note:** Any PR that attempts to send user data (images, passwords, keys) to an analytics endpoint will be rejected and flagged as malicious.
